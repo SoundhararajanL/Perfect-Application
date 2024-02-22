@@ -88,3 +88,8 @@ margin-top: 2%;
 .mb-2 {
   margin-bottom: 1.5rem!important;
 }
+
+/* bmi */
+.bg-primary {
+  background-color: #ffffff;
+}
