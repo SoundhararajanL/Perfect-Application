@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 function NavbarPage() {
   return (
-    <div>
+    <>
        <Navbar bg="primary" data-bs-theme="dark">
           <Container>
             <Navbar.Brand to="/">BE
@@ -20,7 +20,7 @@ function NavbarPage() {
           </Container>
         </Navbar>
      
-    </div>
+    </>
   );
 }
 

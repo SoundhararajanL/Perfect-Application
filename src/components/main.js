@@ -21,23 +21,23 @@ class Main extends Component {
       showModal3: false,
     };
   }
-// 1
+  // 1
   handleCalculator = () => {
     this.setState({ showModal: true });
   }
   handleLength = () => {
     this.setState({ showModal1: true });
-  
+
   }
   handleBMIcalculator = () => {
     this.setState({ showModal2: true });
-  
+
   }
   handleTemperature = () => {
     this.setState({ showModal3: true });
-  
+
   }
-// 2
+  // 2
   handleClose = () => {
     this.setState({ showModal: false });
   }
@@ -56,63 +56,71 @@ class Main extends Component {
       <>
         {/* NAVBAR */}
         <NavbarPage />
-  
+
         {/* Cards */}
-        <div style={{ display: "-webkit-box", justifyContent: 'space-between' }}>
+        <div className="card-container">
           {/* Calculator CARD */}
           <Card
             bg="light"
             text="dark"
-            style={{ width: '9rem' }}
+
             onClick={this.handleCalculator}
           >
-            <Card.Header>Calculator</Card.Header>
+            <Card.Header style={{ height: '2rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              Calculator
+            </Card.Header>
             <Card.Body>
               <Card.Img variant="top" src="https://shorturl.at/psLUZ" />
             </Card.Body>
           </Card>
-  
+
           {/* Length CARD */}
           <Card
             bg="light"
             text="dark"
-            style={{ width: '9rem' }}
+
             onClick={this.handleLength}
           >
-            <Card.Header>Length</Card.Header>
+            <Card.Header style={{ height: '2rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              Length
+            </Card.Header>
             <Card.Body>
               <Card.Img variant="top" src="https://shorturl.at/awJNX" />
             </Card.Body>
           </Card>
 
-          
+
           {/* BMIcalculator CARD */}
           <Card
             bg="light"
             text="dark"
-            style={{ width: '9rem' }}
+
             onClick={this.handleBMIcalculator}
           >
-            <Card.Header>BMIcalculator</Card.Header>
+            <Card.Header style={{ height: '2rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              BMI
+            </Card.Header>
             <Card.Body>
               <Card.Img variant="top" src="https://shorturl.at/qFRU0" />
             </Card.Body>
           </Card>
-       
-        {/* temperature*/}
-        <Card
+
+          {/* temperature*/}
+          <Card
             bg="light"
             text="dark"
-            style={{ width: '9rem' }}
+
             onClick={this.handleTemperature}
           >
-            <Card.Header>Temperature</Card.Header>
+            <Card.Header style={{ height: '2rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              Temperature
+            </Card.Header>
             <Card.Body>
               <Card.Img variant="top" src="https://shorturl.at/xITZ4" />
             </Card.Body>
           </Card>
         </div>
-  
+
         {/* Calculator MODAL */}
         <Modal show={this.state.showModal} onHide={this.handleClose}>
           <Modal.Header closeButton>
@@ -122,7 +130,7 @@ class Main extends Component {
             <Calculator />
           </Modal.Body>
         </Modal>
-  
+
         {/* Length MODAL */}
         <Modal show={this.state.showModal1} onHide={this.handleClose1}>
           <Modal.Header closeButton>
@@ -143,7 +151,7 @@ class Main extends Component {
           </Modal.Body>
         </Modal>
 
-        
+
         {/* temperature MODAL */}
         <Modal show={this.state.showModal3} onHide={this.handleClose3}>
           <Modal.Header closeButton>
@@ -156,7 +164,7 @@ class Main extends Component {
       </>
     );
   }
-  
+
 }
 
 export default Main;

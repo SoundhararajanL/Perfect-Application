@@ -43,6 +43,13 @@ width: 9rem;
 margin-left: 2%;
 margin-top: 2%;
 }
+.card-container {
+    display: flex;
+    flex-direction: row;
+    align-items: unset;
+    margin-top: 16px;
+  }
+  
 
 
 /* calculator */
