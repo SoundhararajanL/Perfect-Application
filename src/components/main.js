@@ -7,7 +7,7 @@ import Calculator from './cal';
 import Length from './length';
 import NavbarPage from './nav';
 import BMI from './BMI';
-
+import Temperature from './temp';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -18,6 +18,7 @@ class Main extends Component {
       showModal: false,
       showModal1: false,
       showModal2: false,
+      showModal3: false,
     };
   }
 // 1
@@ -32,6 +33,10 @@ class Main extends Component {
     this.setState({ showModal2: true });
   
   }
+  handleTemperature = () => {
+    this.setState({ showModal3: true });
+  
+  }
 // 2
   handleClose = () => {
     this.setState({ showModal: false });
@@ -41,6 +46,9 @@ class Main extends Component {
   }
   handleClose2 = () => {
     this.setState({ showModal2: false });
+  }
+  handleClose3 = () => {
+    this.setState({ showModal3: false });
   }
 
   render() {
@@ -90,6 +98,19 @@ class Main extends Component {
               <Card.Img variant="top" src="https://shorturl.at/qFRU0" />
             </Card.Body>
           </Card>
+       
+        {/* temperature*/}
+        <Card
+            bg="light"
+            text="dark"
+            style={{ width: '9rem' }}
+            onClick={this.handleTemperature}
+          >
+            <Card.Header>Temperature</Card.Header>
+            <Card.Body>
+              <Card.Img variant="top" src="https://shorturl.at/xITZ4" />
+            </Card.Body>
+          </Card>
         </div>
   
         {/* Calculator MODAL */}
@@ -119,6 +140,17 @@ class Main extends Component {
           </Modal.Header>
           <Modal.Body>
             <BMI />
+          </Modal.Body>
+        </Modal>
+
+        
+        {/* temperature MODAL */}
+        <Modal show={this.state.showModal3} onHide={this.handleClose3}>
+          <Modal.Header closeButton>
+            <Modal.Title>Temperature</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Temperature />
           </Modal.Body>
         </Modal>
       </>

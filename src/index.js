@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Calculator from './components/cal';
 import Length from './components/length';
 import BMI from './components/BMI';
-
+import Temperature from './components/temp';
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
@@ -15,6 +15,8 @@ ReactDOM.render(
       <Route path="/Calculator" element={<Calculator />} />
       <Route path="/Length" element={<Length />} />
       <Route path="/bmi" element={<BMI />} />
+      <Route path="/temp" element={<Temperature />} />
+
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')
