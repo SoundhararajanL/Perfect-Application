@@ -57,7 +57,7 @@ const Contact = () => {
                     </MDBCol>
                     <MDBCol>
                       <p class="bio">
-                      Hello, I'm a software engineer based in Bangalore, currently employed at ASM Technology. With a diverse background, I've actively participated in several React and Django projects, showcasing my proficiency in Python and JavaScript. My current focus revolves around data science and JavaScript development, with a specialization in Google Apps Script. I bring a wealth of experience in both backend and frontend technologies to contribute effectively to software development projects.
+                     Hello , this is my practice web page 
                       </p>
                     </MDBCol>
                   </MDBRow>

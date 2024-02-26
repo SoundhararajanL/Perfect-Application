@@ -61,9 +61,12 @@ class Main extends Component {
         <div className="card-container">
           {/* Calculator CARD */}
           <Card
-            bg="light"
-            text="dark"
-
+           bg="light"
+           text="dark"
+            style={{
+              backgroundImage: 'linear-gradient(to right, #c5d6f583, #c5d6f5b3)',
+              color: 'white'
+            }}
             onClick={this.handleCalculator}
           >
             <Card.Header style={{ height: '2rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -73,12 +76,17 @@ class Main extends Component {
               <Card.Img variant="top" src="https://shorturl.at/psLUZ" />
             </Card.Body>
           </Card>
+          
+
 
           {/* Length CARD */}
           <Card
             bg="light"
             text="dark"
-
+            style={{
+              backgroundImage: 'linear-gradient(to right, #c5d6f583, #c5d6f5b3)',
+              color: 'white'
+            }}
             onClick={this.handleLength}
           >
             <Card.Header style={{ height: '2rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -94,7 +102,10 @@ class Main extends Component {
           <Card
             bg="light"
             text="dark"
-
+            style={{
+              backgroundImage: 'linear-gradient(to right, #c5d6f583, #c5d6f5b3)',
+              color: 'white'
+            }}
             onClick={this.handleBMIcalculator}
           >
             <Card.Header style={{ height: '2rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -109,7 +120,10 @@ class Main extends Component {
           <Card
             bg="light"
             text="dark"
-
+            style={{
+              backgroundImage: 'linear-gradient(to right, #c5d6f583, #c5d6f5b3)',
+              color: 'white'
+            }}
             onClick={this.handleTemperature}
           >
             <Card.Header style={{ height: '2rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -119,6 +133,9 @@ class Main extends Component {
               <Card.Img variant="top" src="https://shorturl.at/xITZ4" />
             </Card.Body>
           </Card>
+
+          
+          
         </div>
 
         {/* Calculator MODAL */}
