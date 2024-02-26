@@ -1,139 +1,124 @@
-import React from "react";
-const nums = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
-const ops = ['/', '*', '-', '+'];
-const ids = {
-  7: 'seven',
-  8: 'eight',
-  9: 'nine',
-  4: 'four',
-  5: 'five', 
-  6: 'six',
-  1: 'one',
-  2: 'two',
-  3: 'three',
-  0: 'zero',
-  '/': 'divide',
-  '*': 'multiply', 
-  '-': 'subtract',
-  '+': 'add'
-};
+import React, { useState } from "react";
 
-class Calculator extends React.Component {
-  state = {
-    lastPressed: undefined,
-    calc: '0',
-    operation: undefined
-  }
-  
-  handleClick = (e) => {
-    const { calc, lastPressed } = this.state;
-    const { innerText } = e.target;
-    
-    console.log(innerText);
-    
-    switch(innerText) {
-      case 'AC': {
-        this.setState({
-          calc: '0'
-        });
-        break;
-      }
-      case '=': {
-        const evaluated = eval(calc);
-        this.setState({
-          calc: evaluated
-        });
-        break;
-      }
-      
-      case '.':{
-        const splitted = calc.split(/[\+\-\*\/]/);
-        const last = splitted.slice(-1)[0];
-        
-        if(!last.includes('.')) {
-          this.setState({
-            calc: calc+'.' 
-          });
-        }
-        break;
-      }
-      
-      default: {
-        let e = undefined;
-        // check for other op
-        if(ops.includes(innerText)) {  
-          if(ops.includes(lastPressed) && innerText !== '-') {
-            const lastNumberIdx = calc.split('').reverse().findIndex(char => char !== ' ' && nums.includes(+char));
-            e = calc.slice(0, calc.length - lastNumberIdx) + `${innerText}`;
-          } else {
-            e = `${calc} ${innerText}`;
-          }
-        } else {
-          e = (calc === '0') ? innerText : (calc + innerText);  
-        }
-        
-        this.setState({
-          calc: e
-        });
-      } 
+const Calculator = () => {
+  const [input, setInput] = useState("");
+  const [resultDisplayed, setResultDisplayed] = useState(false);
+
+  const handleNumberClick = (number) => {
+    let currentString = input;
+    let lastChar = currentString[currentString.length - 1];
+
+    if (!resultDisplayed) {
+      setInput(currentString + number);
+    } else if (
+      resultDisplayed &&
+      (lastChar === "+" || lastChar === "-" || lastChar === "×" || lastChar === "÷")
+    ) {
+      setResultDisplayed(false);
+      setInput(currentString + number);
+    } else {
+      setResultDisplayed(false);
+      setInput(number);
     }
-    this.setState({
-      lastPressed: innerText
-    });
-  }
- 
-  render() {
-    const { calc } = this.state;
-    
-    return (
-      <div className="calculator">
-       
-        <div id="display" className="display">
-          {calc}
+  };
+
+  const handleOperatorClick = (operator) => {
+    let currentString = input;
+    let lastChar = currentString[currentString.length - 1];
+
+    if (lastChar === "+" || lastChar === "-" || lastChar === "×" || lastChar === "÷") {
+      let newString = currentString.substring(0, currentString.length - 1) + operator;
+      setInput(newString);
+    } else if (currentString.length === 0) {
+      console.log("Enter a number first");
+    } else {
+      setInput(currentString + operator);
+    }
+  };
+
+  const handleEqualClick = () => {
+    let inputString = input;
+    let numbers = inputString.split(/\+|\-|\×|\÷/g);
+    let operators = inputString.replace(/[0-9]|\./g, "").split("");
+
+    let divide = operators.indexOf("÷");
+    while (divide !== -1) {
+      numbers.splice(divide, 2, numbers[divide] / numbers[divide + 1]);
+      operators.splice(divide, 1);
+      divide = operators.indexOf("÷");
+    }
+
+    let multiply = operators.indexOf("×");
+    while (multiply !== -1) {
+      numbers.splice(multiply, 2, numbers[multiply] * numbers[multiply + 1]);
+      operators.splice(multiply, 1);
+      multiply = operators.indexOf("×");
+    }
+
+    let subtract = operators.indexOf("-");
+    while (subtract !== -1) {
+      numbers.splice(subtract, 2, numbers[subtract] - numbers[subtract + 1]);
+      operators.splice(subtract, 1);
+      subtract = operators.indexOf("-");
+    }
+
+    let add = operators.indexOf("+");
+    while (add !== -1) {
+      numbers.splice(add, 2, parseFloat(numbers[add]) + parseFloat(numbers[add + 1]));
+      operators.splice(add, 1);
+      add = operators.indexOf("+");
+    }
+
+    setInput(numbers[0].toString());
+    setResultDisplayed(true);
+  };
+
+  const handleClearClick = () => {
+    setInput("");
+  };
+
+  return (
+    <div className="calculator">
+      <div className="input" id="input">
+        {input}
+      </div>
+      <div className="buttons">
+        <div className="operators">
+          <div onClick={() => handleOperatorClick("+")}>+</div>
+          <div onClick={() => handleOperatorClick("-")}>-</div>
+          <div onClick={() => handleOperatorClick("×")}>×</div>
+          <div onClick={() => handleOperatorClick("÷")}>÷</div>
         </div>
-        <div className="nums-container">
-          <button 
-            className="big-h light-grey ac" 
-            onClick={this.handleClick} 
-            id="clear">
-            AC
-          </button>
-          {nums.map(num => (
-            <button 
-              className={`dark-grey ${num === 0 && 'big-h'}`} 
-              key={num} 
-              onClick={this.handleClick}
-              id={ids[num]}>
-              {num}
-            </button>
-          ))}
-          <button 
-            className="light-grey" 
-            onClick={this.handleClick} 
-            id="decimal">
-            .
-          </button>
+        <div className="leftPanel">
+          <div className="numbers">
+            <div onClick={() => handleNumberClick("7")}>7</div>
+            <div onClick={() => handleNumberClick("8")}>8</div>
+            <div onClick={() => handleNumberClick("9")}>9</div>
+          </div>
+          <div className="numbers">
+            <div onClick={() => handleNumberClick("4")}>4</div>
+            <div onClick={() => handleNumberClick("5")}>5</div>
+            <div onClick={() => handleNumberClick("6")}>6</div>
+          </div>
+          <div className="numbers">
+            <div onClick={() => handleNumberClick("1")}>1</div>
+            <div onClick={() => handleNumberClick("2")}>2</div>
+            <div onClick={() => handleNumberClick("3")}>3</div>
+          </div>
+          <div className="numbers">
+            <div onClick={() => handleNumberClick("0")}>0</div>
+            <div onClick={() => handleNumberClick(".")}>.</div>
+            <div id="clear" onClick={handleClearClick}>
+              C
+            </div>
+          </div>
         </div>
-        <div className="ops-container">
-          {ops.map(op => (
-            <button 
-              className="orange" 
-              key={op} 
-              onClick={this.handleClick}
-              id={ids[op]}>
-              {op}
-            </button>
-          ))}
-          <button 
-            className="orange" 
-            onClick={this.handleClick} 
-            id="equals">
-            =
-          </button>
+        <div className="equal" id="result" onClick={handleEqualClick}>
+          =
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
- export default Calculator;
+export default Calculator;
