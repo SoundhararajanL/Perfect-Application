@@ -11,6 +11,8 @@ import Temperature from './temp';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import bmi from "./bmi.png"
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -73,7 +75,7 @@ class Main extends Component {
               Calculator
             </Card.Header>
             <Card.Body>
-              <Card.Img variant="top" src="https://shorturl.at/psLUZ" />
+              <Card.Img variant="top" src="https://shorturl.at/psLUZ"  />
             </Card.Body>
           </Card>
           
@@ -112,7 +114,7 @@ class Main extends Component {
               BMI
             </Card.Header>
             <Card.Body>
-              <Card.Img variant="top" src="https://shorturl.at/qFRU0" />
+              <Card.Img variant="top" src={bmi} />
             </Card.Body>
           </Card>
 

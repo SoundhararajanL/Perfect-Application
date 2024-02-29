@@ -14,7 +14,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/Calculator" element={<Calculator />} />
+      <Route oute path="/Calculator" element={<Calculator />} />
       <Route path="/Length" element={<Length />} />
       <Route path="/bmi" element={<BMI />} />
       <Route path="/temp" element={<Temperature />} />
