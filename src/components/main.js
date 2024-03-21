@@ -11,7 +11,10 @@ import Temperature from './temp';
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import bmi from "./bmi.png"
+import bmi from "./bmi.png";
+import cal from "./cal.png";
+import len from "./length.png";
+import temp from "./temperature-2715.png";
 
 class Main extends Component {
   constructor(props) {
@@ -75,7 +78,7 @@ class Main extends Component {
               Calculator
             </Card.Header>
             <Card.Body>
-              <Card.Img variant="top" src="https://shorturl.at/psLUZ"  />
+              <Card.Img variant="top" src={cal}  />
             </Card.Body>
           </Card>
           
@@ -95,7 +98,7 @@ class Main extends Component {
               Length
             </Card.Header>
             <Card.Body>
-              <Card.Img variant="top" src="https://shorturl.at/awJNX" />
+              <Card.Img variant="top" src={len} />
             </Card.Body>
           </Card>
 
@@ -132,7 +135,7 @@ class Main extends Component {
               Temperature
             </Card.Header>
             <Card.Body>
-              <Card.Img variant="top" src="https://shorturl.at/xITZ4" />
+              <Card.Img variant="top" src={temp} />
             </Card.Body>
           </Card>
 
